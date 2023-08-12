@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url("https://landing.zytheme.com/siena/assets/images/background/bg-1.png");
+    background-position: 0;
+    background-repeat: no-repeat;
+    font-family: 'Montserrat', sans-serif;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    margin: 0 60px;
+}
+
+.logo {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    flex: 1;
+}
+
+nav ul {
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul li {
+    list-style: none;
+    margin: 0 20px;
+}
+
+nav a {
+    color: #6262a0;
+    text-decoration: none;
+    font-size: 1.0em;
+}
+nav a:hover {
+    color: #664ffa;
+}
+
+h1 {
+    color: #6262a8;
+    font-size: 2.3em;
+    font-weight: 700;
+}
+
+p {
+    color: #ababc7;
+}
+
+form {
+    background-color: #fff;
+    padding: 10px 40px;
+    border-radius: 6px;
+    box-shadow: 0px 2px 4px 1px rgba(163,163,163,0.79);
+    -webkit-box-shadow: 0px 2px 4px 1px rgba(163,163,163,0.79);
+    -moz-box-shadow: 0px 2px 4px 1px rgba(163,163,163,0.79);
+}
+
+form h4 {
+    text-align: center;
+    color: #6262a0;
+    font-weight: 400;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+/* ... */
+.form-control label {
+    display: block; /* ..... */
+    color: #664ffa;
+    font-size: 0.90em;
+    margin-bottom: 6px;
+}
+
+.form-control input {
+    width: 100%;
+    background-color: #f7f6ff;
+    color: #222;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 6px 6px 6px 18px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    width: 100%;
+    background-color: #664ffa;
+    border-radius: 6px;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 10px 0;
+    border: none;
+    cursor: pointer;
+}
+
+#section-home {
+    display: flex;
+    margin: 100px 60px;
+}
+
+#section-home > div {
+    flex: 1;
+}
+
+#section-home > div:first-child {
+    margin-right: 10px;
+}
