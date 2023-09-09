@@ -1,24 +1,31 @@
+import { styled } from "styled-components"
 import { Category } from "../Category"
+import { IoMusicalNotes, IoColorPalette, IoFastFood, IoLaptop } from 'react-icons/io5'
+
+const CategoriesContainer = styled.section`
+  display: flex;
+  margin: 0 15px;
+`
 
 const CATEGORY_LIST = [
   {
     name: 'Arte',
-    icon: 'art',
+    icon: <IoColorPalette />,
     color: 'yellow'
   },
   {
     name: 'Gastronómico',
-    icon: 'food',
+    icon: <IoFastFood />,
     color: 'orange'
   },
   {
     name: 'Musica',
-    icon: 'music',
+    icon: <IoMusicalNotes />,
     color: 'blue'
   },
   {
-    name: 'Tecnológico',
-    icon: 'device',
+    name: 'Geek',
+    icon: <IoLaptop />,
     color: 'green'
   },
 ]
@@ -26,10 +33,10 @@ const CATEGORY_LIST = [
 export const Categories = () => {
 
   return (
-    <section>
+    <CategoriesContainer>
       {
         CATEGORY_LIST.map(item => <Category name={item.name} icon={item.icon} color={item.color} />)
       }
-    </section>
+    </CategoriesContainer>
   )
 }
