@@ -1,5 +1,6 @@
 import { styled } from "styled-components"
 import { COLORS } from "../../../../globalStyles"
+import { Link } from 'react-router-dom'
 
 /* styles */
 const TopEventsContainer = styled.section`
@@ -26,9 +27,11 @@ const EventContent = styled.div`
     font-size: 1.2em;
     line-height: 1.2em;
     margin: 10px 0;
+    color: #222;
   }
   p {
     margin: 0;
+    color: #222;
   }
 `;
 
@@ -66,17 +69,19 @@ const EVENTS_DATA = [
 /* */
 // each event component
 const Event = (props) => (
-  <EventWrapper>
-    <img src={props.image} width="200px" />
-    <EventContent>
-      <h5>{props.title}</h5>
-      <p>{props.date}</p>
-      <p>{props.location}</p>
-      {
-        props.is_free ? <FreeText>Gratuito</FreeText> : <p>$ {props.price}</p>
-      }
-    </EventContent>
-  </EventWrapper>
+  <Link to={ `/detail/${props.id}` }>
+    <EventWrapper>
+      <img src={props.image} width="200px" />
+      <EventContent>
+        <h5>{props.title}</h5>
+        <p>{props.date}</p>
+        <p>{props.location}</p>
+        {
+          props.is_free ? <FreeText>Gratuito</FreeText> : <p>$ {props.price}</p>
+        }
+      </EventContent>
+    </EventWrapper>
+  </Link>
 )
 
 export const TopEvents = () => {

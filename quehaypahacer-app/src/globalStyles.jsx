@@ -14,6 +14,15 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     font-family: 'Poppins';
   }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
 `
 export const Button = styled.button`
   width: 100%;

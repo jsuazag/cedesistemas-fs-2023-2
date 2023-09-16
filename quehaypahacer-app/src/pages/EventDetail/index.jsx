@@ -1,11 +1,14 @@
+import { useParams } from 'react-router-dom'
 import { Layout } from '../../components/Layout'
 import { Button, COLORS } from '../../globalStyles'
 
 export const EventDetail = () => {
 
+  const { id } = useParams()
+
   return (
     <Layout>
-      <h2>Titulo del evento</h2>
+      <h2>Titulo del evento { id } </h2>
       <div>
         <img src="https://www.eltiempo.com/files/image_640_428/uploads/2022/07/29/62e3d34873715.jpeg" width="100%" />
       </div>
