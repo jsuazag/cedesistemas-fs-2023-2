@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export const Topbar = () => {
 
-  const isAuth = true
+  const isAuth = false
 
   return (
     <TopbarContainer>
