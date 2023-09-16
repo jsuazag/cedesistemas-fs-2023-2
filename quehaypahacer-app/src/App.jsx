@@ -4,6 +4,7 @@ import { Home } from "./pages/Home"
 import { EventDetail } from "./pages/EventDetail"
 import { Profile } from './pages/Profile'
 import { Confirmation } from './pages/Confirmation'
+import { Login } from './pages/Login'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: '/confirmation',
     element: <Confirmation />
+  },
+  {
+    path: '/login',
+    element: <Login />
   }
 ])
 
