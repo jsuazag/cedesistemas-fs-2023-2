@@ -1,26 +1,6 @@
-import styled from 'styled-components'
 import { Layout } from '../../components/Layout'
-import { Button, COLORS } from '../../globalStyles';
-import { Link } from 'react-router-dom';
-
-export const FormContainer = styled.section`
-  //border: 1px solid red;
-`;
-
-export const FormControl = styled.div`
-
-  margin: 12px 0;
-
-  input {
-    width: 100%;
-    font-family: 'Montserrat';
-    font-size: 1.1em;
-    border: 2px solid ${COLORS.secondary};
-    border-radius: 6px;
-    padding: 8px 10px;
-    outline: none;
-  }
-`
+import { Button, FormContainer, FormControl } from '../../globalStyles'
+import { Link } from 'react-router-dom'
 
 export const Login = () => {
 
@@ -40,7 +20,7 @@ export const Login = () => {
             <input type="password" />
           </FormControl>
 
-          <Button type='submit'>Acceder</Button>
+          <Button type="submit">Acceder</Button>
 
         </form>
       </FormContainer>

@@ -47,3 +47,23 @@ export const Button = styled.button`
     opacity: 1;
   }
 `
+
+export const FormContainer = styled.section`
+  //border: 1px solid red;
+`;
+
+export const FormControl = styled.div`
+  margin: 12px 0;
+  input {
+    width: 100%;
+    font-family: 'Montserrat';
+    font-size: 1.1em;
+    border: 2px solid ${COLORS.secondary};
+    border-radius: 6px;
+    padding: 8px 10px;
+    outline: none;
+  }
+  label {
+    font-size: ${ props => props.fontSize || '1.0em' };
+  }
+`
