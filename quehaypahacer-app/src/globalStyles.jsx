@@ -66,4 +66,8 @@ export const FormControl = styled.div`
   label {
     font-size: ${ props => props.fontSize || '1.0em' };
   }
+  span {
+    font-size: 0.7em;
+    color: ${COLORS.error};
+  }
 `

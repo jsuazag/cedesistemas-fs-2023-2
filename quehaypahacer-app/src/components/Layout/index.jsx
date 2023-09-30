@@ -14,7 +14,7 @@ export const Layout = (props) => {
       <ContentLayout>
         { props.children }
       </ContentLayout>
-      <footer>todos los derechos</footer>
+      {/*<footer>todos los derechos</footer>*/}
     </>
   )
 }
