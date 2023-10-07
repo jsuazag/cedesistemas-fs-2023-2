@@ -5,6 +5,7 @@ import { EventDetail } from "./pages/EventDetail"
 import { Profile } from './pages/Profile'
 import { Confirmation } from './pages/Confirmation'
 import { Login } from './pages/Login'
+import { UserContextStore } from './contexts/UserContext'
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,9 @@ export const App = () => {
   return (
     <>
       <GlobalStyles />
-      <RouterProvider router={router} />
+      <UserContextStore>
+        <RouterProvider router={router} />
+      </UserContextStore>
     </>
   )
 }

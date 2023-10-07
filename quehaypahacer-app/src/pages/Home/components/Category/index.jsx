@@ -40,9 +40,9 @@ export const Category = (props) => {
   }
 
   return (
-    <CategoryWrapper isActive={props.isActive} onClick={categorySelection}>
+    <CategoryWrapper $isActive={props.isActive} onClick={categorySelection}>
       <IconWrapper>{props.icon}</IconWrapper>
-      <p>{props.name} { props.isActive ? 'T' : 'F' }</p>
+      <p>{props.name}</p>
     </CategoryWrapper>
   )
 }

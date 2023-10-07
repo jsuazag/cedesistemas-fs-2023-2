@@ -1,19 +1,32 @@
+import { useContext } from 'react'
 import { Layout } from '../../components/Layout'
 import { Button } from '../../globalStyles'
+import { UserContext } from '../../contexts/UserContext'
+import { useNavigate } from 'react-router-dom'
 
 export const Profile = () => {
+
+  const {user, logout} = useContext(UserContext)
+  const navigate = useNavigate()
+
+  const closeSession = () => {
+    setTimeout(() => {
+      logout()
+      navigate('/')
+    }, 1500)
+  }
 
   return (
     <Layout>
       <h3>Mi cuenta</h3>
       <hr />
-      <p>Nombre: <strong>Juan</strong></p>
-      <p>Correo: <strong>Juan@gmail.com</strong></p>
-      <p>Identificación: <strong>116771191</strong></p>
-      <p>Teléfono: <strong>320000000</strong></p>
+      <p>Nombre: <strong>{user.name}</strong></p>
+      <p>Correo: <strong>{user.email}</strong></p>
+      <p>Identificación: <strong>{user.document}</strong></p>
+      <p>Teléfono: <strong>{user.phone}</strong></p>
 
       <br /><br />
-      <Button>Cerrar Sesión</Button>
+      <Button onClick={closeSession}>Cerrar Sesión</Button>
     </Layout>
   )
 }
