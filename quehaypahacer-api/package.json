@@ -1,0 +1,19 @@
+{
+  "name": "quehaypahacer-api",
+  "version": "1.0.0",
+  "description": "api for quehaypahacer",
+  "main": "app.js",
+  "scripts": {
+    "start:dev": "nodemon app.js",
+    "start:pro": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jsuazag",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
