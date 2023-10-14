@@ -1,0 +1,26 @@
+
+// query params
+// ?key=value&key=value
+app.get('/', (req, res) => {
+    const name = req.query.name
+    const age = req.query.age
+    res.send(`${name}, ${age}`)
+})
+
+// body
+app.post('/', (req, res) => {
+    const name = req.body.name
+    const age = req.body.age
+    const products = req.body.products
+    res.send(`${name}, ${age}, ${products[0]}`)
+})
+
+app.delete('/', (req, res) => {
+    res.send('Hola mundo express DELETE!!!')
+})
+
+// params
+app.put('/users/:id', (req, res) => {
+    const id = req.params.id
+    res.send(`${id}`)
+})
