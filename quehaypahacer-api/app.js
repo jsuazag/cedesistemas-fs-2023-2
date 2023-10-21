@@ -6,6 +6,9 @@ const port = 3000
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+//conn
+require('./conn/conn.mongo')
+
 //modules
 app.use('/users', require('./modules/users/users.routes'))
 

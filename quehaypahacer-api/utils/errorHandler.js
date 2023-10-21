@@ -6,7 +6,8 @@ const errorHandler = (errorItem, extra = {}) => {
 
   return {
     status: errorItem.status,
-    response
+    response,
+    handled: true
   }
 }
 
