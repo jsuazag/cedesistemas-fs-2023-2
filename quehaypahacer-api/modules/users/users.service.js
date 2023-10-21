@@ -10,7 +10,14 @@ const login = (email, password) => {
   throw errorHandler(USER_PASS_WRONG, { fields: "email" })
 }
 
+const create = (userData) => {
+  return {
+    created: true
+  }
+}
+
 
 module.exports = {
-  login
+  login,
+  create
 }

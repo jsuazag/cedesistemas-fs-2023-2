@@ -11,7 +11,13 @@ const login = (req, res) => {
 }
 
 const signup = (req, res) => {
-  res.json({ created: true })
+  try {
+    const userData = req.body
+    const response = usersService.create(userData)
+    res.status(200).json(response)
+  } catch (error) {
+    res.status(error.status).json(error.response)
+  }
 }
 
 module.exports = {
