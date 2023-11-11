@@ -20,7 +20,18 @@ const signup = async (req, res) => {
   }
 }
 
+const info = async (req, res) => {
+  try {
+    const {idUser} = req.payload
+    const response = await usersService.info(idUser)
+    res.status(200).json(response)
+  } catch (error) {
+    res.status(error.status).json(error.response)
+  }
+}
+
 module.exports = {
   login,
-  signup
+  signup,
+  info
 }
