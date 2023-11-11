@@ -32,6 +32,7 @@ const getOne = async (eventId) => {
 const getAll = async (filters) => {
   try {
 
+    let events = []
     const currentDate = new Date()
     const query = {
       date: {
@@ -39,13 +40,32 @@ const getAll = async (filters) => {
       }
     }
 
-    const events = await Event.find(query)
+    if (filters.category) query.idCategory = Number(filters.category)
+
+    if (filters.latitude && filters.longitude) {
+      const userCoords = [ Number(filters.longitude), Number(filters.latitude)]
+      events = await Event.aggregate([
+        {
+          $geoNear: {
+             near: { type: "Point", coordinates: userCoords },
+             distanceField: "dist.calculated",
+             maxDistance: 20000,
+             query: query,
+             includeLocs: "dist.location",
+             spherical: true
+          }
+        }
+      ])
+    } else {
+      events = await Event.find(query)
+    }
 
     return {
       events
     }
 
   } catch (error) {
+    console.log('error ->', error)
     throw error.handled ? error : errorHandler(SERVER_ERROR, error)
   }
 }
