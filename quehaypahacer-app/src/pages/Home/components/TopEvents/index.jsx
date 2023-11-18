@@ -3,6 +3,7 @@ import { COLORS } from "../../../../globalStyles"
 import { Link } from 'react-router-dom'
 import { useContext, useEffect, useState } from "react"
 import { CategoryContext } from "../../../../contexts/CategoryContext"
+import { httpRequest, HTTP_METHODS } from '../../../../utils/HttpRequest'
 
 /* styles */
 const TopEventsContainer = styled.section`
@@ -44,7 +45,7 @@ const FreeText = styled.p`
   border-radius: 3px;
   display: inline;
 `
-
+/*
 const EVENTS_DATA = [
   { id: 1,
     image: 'https://www.eltiempo.com/files/image_640_428/uploads/2022/07/29/62e3d34873715.jpeg',
@@ -67,19 +68,20 @@ const EVENTS_DATA = [
     date: '09/09/2023', location: 'La macareran', is_free: false, price: 2400000, category: 3
   }
 ]
+*/
 
 /* */
 // each event component
 const Event = (props) => (
-  <Link to={ `/detail/${props.id}` }>
+  <Link to={ `/detail/${props._id}` }>
     <EventWrapper>
       <img src={props.image} width="200px" />
       <EventContent>
-        <h5>{props.title}</h5>
+        <h5>{props.name}</h5>
         <p>{props.date}</p>
-        <p>{props.location}</p>
+        <p>{props.place}</p>
         {
-          props.is_free ? <FreeText>Gratuito</FreeText> : <p>$ {props.price}</p>
+          props.price === 0 ? <FreeText>Gratuito</FreeText> : <p>$ {props.price}</p>
         }
       </EventContent>
     </EventWrapper>
@@ -89,10 +91,42 @@ const Event = (props) => (
 export const TopEvents = ({ latitude = null, longitude = null}) => {
 
   const { categoryState } = useContext(CategoryContext)
-  const [events, setEvents] = useState(EVENTS_DATA)
+  const [events, setEvents] = useState([])
 
   useEffect(() => {
+    loadEvents ()
+  }, [latitude, longitude, categoryState]) // 1ra y única vez
 
+  const loadEvents = async () => {
+    try {
+
+      let params = {}
+      if (categoryState.categorySelected !== 0) {
+        params.category = categoryState.categorySelected
+      }
+
+      if (latitude && longitude) {
+        params.latitude = latitude
+        params.longitude = longitude
+      }
+
+      const response = await httpRequest ({
+        method: HTTP_METHODS.GET,
+        endpoint: '/events',
+        params
+      })
+
+      const {events: data} = response.data
+
+      setEvents(data)
+
+    } catch (error) {
+      // TODO
+    }
+  }
+
+  /*
+  useEffect(() => {
     if (categoryState.categorySelected !== 0) {
       const eventsFilter = EVENTS_DATA.filter(
         item => item.category === categoryState.categorySelected
@@ -101,8 +135,8 @@ export const TopEvents = ({ latitude = null, longitude = null}) => {
     } else {
       setEvents(EVENTS_DATA)
     }
-
   }, [categoryState])
+  */
 
   return (
     <TopEventsContainer>
