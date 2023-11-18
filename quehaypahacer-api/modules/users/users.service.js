@@ -7,7 +7,7 @@ const User = require('./models/user.model')
 const login = async (email, password) => {
   try {
     const user = await User.findOne({ email })
-    if (await bcrypt.compare(password, user.password)) {
+    if (user && await bcrypt.compare(password, user.password)) {
 
       const payload = {
         idUser: user._id
