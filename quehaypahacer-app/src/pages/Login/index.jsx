@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useContext } from 'react'
 import { UserContext } from '../../contexts/UserContext'
+import { httpRequest } from '../../utils/HttpRequest'
 
 const emailPattern = /^[A-Za-z]+[A-Za-z0-9_\.]*@[A-Za-z0-9]+\.[A-Za-z]+/i
 
@@ -13,18 +14,18 @@ export const Login = () => {
   const navigate = useNavigate()
   const { register, handleSubmit, formState: { errors } } = useForm()
 
-  const onSubmitLogin = data => {
-    console.log('formData', data)
-    if (data.email === 'juanito@gmail.com' && data.password === '123456') {
-      const userData = { // mockear
-        name: 'Juanito',
-        email: data.email,
-        document: '0000005',
-        phone: '5555555'
-      }
-      setAuthorization(userData)
+  const onSubmitLogin = async data => {
+    try {
+      const response = await httpRequest({
+        endpoint: '/users/login',
+        body: data
+      })
+
+      const {token} = response.data // TODO
+      setAuthorization({}) // TODO
       navigate('/')
-    } else {
+
+    } catch (error) {
       alert('Error de credenciales')
     }
   }
