@@ -7,6 +7,7 @@ import { currencyFormat } from '../../utils/CurrencyFormat'
 import { dateFormat } from '../../utils/DateFormat'
 import { UserContext } from '../../contexts/UserContext'
 import { Alert } from '../../components/Alert'
+import { getCategoryText } from '../../constants/categoriesDict'
 
 export const EventDetail = () => {
 
@@ -57,7 +58,7 @@ export const EventDetail = () => {
         <p>{event.description}</p>
         <p>{event.place}</p>
         <p>{dateFormat(event.date)}</p>
-        <p>{event.idCategory}</p>
+        <p>{getCategoryText(event.idCategory)}</p>
         <p>{event.price === 0 ? 'Gratuito': currencyFormat(event.price)}</p>
       </div>
       <Button onClick={joinToEvent} color={COLORS.secondary}>Quiero participar</Button>
