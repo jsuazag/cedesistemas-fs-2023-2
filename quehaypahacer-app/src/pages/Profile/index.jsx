@@ -22,7 +22,7 @@ export const Profile = () => {
       <hr />
       <p>Nombre: <strong>{user.name}</strong></p>
       <p>Correo: <strong>{user.email}</strong></p>
-      <p>Identificación: <strong>{user.document}</strong></p>
+      <p>Identificación: <strong>{user.identification}</strong></p>
       <p>Teléfono: <strong>{user.phone}</strong></p>
 
       <br /><br />

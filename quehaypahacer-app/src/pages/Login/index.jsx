@@ -5,12 +5,13 @@ import { useForm } from 'react-hook-form'
 import { useContext } from 'react'
 import { UserContext } from '../../contexts/UserContext'
 import { httpRequest } from '../../utils/HttpRequest'
+import { setToken } from '../../utils/TokenLocalStorage'
 
 const emailPattern = /^[A-Za-z]+[A-Za-z0-9_\.]*@[A-Za-z0-9]+\.[A-Za-z]+/i
 
 export const Login = () => {
 
-  const { setAuthorization } = useContext(UserContext)
+  // const { setAuthorization } = useContext(UserContext)
   const navigate = useNavigate()
   const { register, handleSubmit, formState: { errors } } = useForm()
 
@@ -21,9 +22,12 @@ export const Login = () => {
         body: data
       })
 
-      const {token} = response.data // TODO
-      setAuthorization({}) // TODO
-      navigate('/')
+      const {token} = response.data
+      setToken(token)
+      // setAuthorization({}) // TODO
+      setTimeout(() => {
+        navigate('/')
+      }, 1000)
 
     } catch (error) {
       alert('Error de credenciales')
