@@ -6,6 +6,7 @@ import { useContext } from 'react'
 import { UserContext } from '../../contexts/UserContext'
 import { httpRequest } from '../../utils/HttpRequest'
 import { setToken } from '../../utils/TokenLocalStorage'
+import { ALERT_ICON, Alert } from '../../components/Alert'
 
 const emailPattern = /^[A-Za-z]+[A-Za-z0-9_\.]*@[A-Za-z0-9]+\.[A-Za-z]+/i
 
@@ -30,7 +31,11 @@ export const Login = () => {
       }, 1000)
 
     } catch (error) {
-      alert('Error de credenciales')
+      Alert ({
+        icon: ALERT_ICON.ERROR,
+        title: 'Credenciales invalidas',
+        text: 'Verifica tus credenciales de acceso'
+      })
     }
   }
 

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useContext, useEffect, useState } from "react"
 import { CategoryContext } from "../../../../contexts/CategoryContext"
 import { httpRequest, HTTP_METHODS } from '../../../../utils/HttpRequest'
+import { currencyFormat } from "../../../../utils/CurrencyFormat"
 
 /* styles */
 const TopEventsContainer = styled.section`
@@ -81,7 +82,7 @@ const Event = (props) => (
         <p>{props.date}</p>
         <p>{props.place}</p>
         {
-          props.price === 0 ? <FreeText>Gratuito</FreeText> : <p>$ {props.price}</p>
+          props.price === 0 ? <FreeText>Gratuito</FreeText> : <p>{currencyFormat(props.price)}</p>
         }
       </EventContent>
     </EventWrapper>
